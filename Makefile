@@ -6,7 +6,8 @@ COMPOSER=$(DOCKER) --user $(id -u):$(id -g) -v ${PWD}:/app $(COMPOSER_DOCKER_IMA
 
 .PHONY: install
 install: ## Install project dependencies
-	@$(COMPOSER) composer install && composer dump-autoload
+	@$(COMPOSER) composer install
+	@$(COMPOSER) composer dump-autoload
 
 .PHONY: web-shell
 web-shell: ## Open the shell of the web container
@@ -26,15 +27,16 @@ safe-chk: ## Check if dependencies are safe
 
 .PHONY: run
 run: ## run the application
+	@sudo chmod -R 777 ./docker/socket
 	@docker-compose up --build -d
 
 .PHONY: clean
 clean: ## stops the containers if exists and remove all the dependencies
 	@docker-compose down --remove-orphans || true
-	@rm -rf vendor || true
-	@rm -rf var/cache/* || true
-	@rm -rf bin/.phpunit || true
-	@rm -rf composer.lock || true
+	@sudo rm -rf vendor || true
+	@sudo rm -rf var/cache/* || true
+	@sudo rm -rf bin/.phpunit || true
+	@sudo rm -rf composer.lock || true
 
 .PHONY: api-docs
 api-docs: ## Show the API documentation
