@@ -1,0 +1,14 @@
+fos_rest:
+  body_listener: true
+  param_fetcher_listener: force
+  format_listener:
+    rules:
+      - priorities: [json, xml]
+      - fallback_format: json
+  view:
+    default_engine: php
+    formats:
+      json: true
+    templating_formats:
+      html: false
+    view_response_listener: true

@@ -1,0 +1,29 @@
+version: '3.7'
+services: 
+  nginx:
+    build: ./docker/nginx
+    container_name: billie_web_container
+    volumes: 
+      - .:/var/www/html:cached
+      - ./docker/socket:/socket
+    depends_on: 
+      - php
+    ports:
+      - 80:8080
+      - 443:8443
+    networks:
+      - billie
+  php:
+    build: ./docker/php
+    container_name: billie_php_fpm_container
+    volumes:
+      - .:/var/www/html:cached
+      - ./docker/socket:/socket
+    networks:
+      - billie
+    environment:
+      PHP_IDE_CONFIG: "serverName=billie"
+
+networks:
+  billie:
+    driver: bridge
