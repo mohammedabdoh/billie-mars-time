@@ -12,8 +12,6 @@ install: ## Install project dependencies
 .PHONY: run
 run: ## run the application
 	@docker-compose up --build -d
-	@sudo chmod -R 777 ./var/cache
-	@sudo chmod -R 777 ./var/log
 	@docker exec -it billie_php_fpm_container ./bin/console cache:warmup
 	@printf "\n-> Service is available at: http://localhost"
 	@printf "\n-> Example: http://localhost/mars-time/convert/2020-07-11T16:36:52+00:00\n"
@@ -29,8 +27,6 @@ api-docs: ## open the api docs
 .PHONY: clean
 clean: ## stops the containers if exists and remove all the dependencies
 	@docker-compose down --remove-orphans || true
-	@sudo rm -rf vendor || true
-	@rm -rf composer.lock || true
 
 .PHONY: help
 help:
