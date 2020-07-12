@@ -17,6 +17,9 @@
     "doctrine/lexer": {
         "version": "1.2.1"
     },
+    "exsyst/swagger": {
+        "version": "v0.4.1"
+    },
     "friendsofsymfony/rest-bundle": {
         "version": "2.2",
         "recipe": {
@@ -43,6 +46,15 @@
     },
     "myclabs/deep-copy": {
         "version": "1.10.1"
+    },
+    "nelmio/api-doc-bundle": {
+        "version": "3.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "3.0",
+            "ref": "c8e0c38e1a280ab9e37587a8fa32b251d5bc1c94"
+        }
     },
     "phar-io/manifest": {
         "version": "1.0.3"
@@ -160,6 +172,9 @@
             "config/packages/sensio_framework_extra.yaml"
         ]
     },
+    "symfony/asset": {
+        "version": "v5.1.2"
+    },
     "symfony/browser-kit": {
         "version": "v5.1.2"
     },
@@ -257,6 +272,9 @@
     "symfony/mime": {
         "version": "v4.4.10"
     },
+    "symfony/options-resolver": {
+        "version": "v5.1.2"
+    },
     "symfony/polyfill-intl-grapheme": {
         "version": "v1.17.1"
     },
@@ -353,5 +371,8 @@
     },
     "willdurand/negotiation": {
         "version": "v2.3.1"
+    },
+    "zircote/swagger-php": {
+        "version": "2.0.16"
     }
 }
