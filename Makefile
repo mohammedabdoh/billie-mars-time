@@ -23,8 +23,6 @@ test: ## run unit and functional tests
 clean: ## stops the containers if exists and remove all the dependencies
 	@docker-compose down --remove-orphans || true
 	@sudo rm -rf vendor || true
-	@rm -rf var/cache/* || true
-	@rm -rf bin/.phpunit || true
 	@rm -rf composer.lock || true
 
 .PHONY: api-docs
