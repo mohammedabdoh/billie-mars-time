@@ -26,7 +26,7 @@ class MarsTimeDomainService
     }
 
     /**
-     * Converts the Earth UTC time and created a new MarsSolDate our of it
+     * Converts the Earth UTC time and creates a new MarsSolDate out of it
      * using the formula MSD = (t + (TAI−UTC)) / 88775.244147 + 34127.2954262 @see https://en.wikipedia.org/wiki/Timekeeping_on_Mars#cite_note-giss1-1
      * @param DateTime $earthUTCTime
      * @return MarsSolDate
@@ -40,7 +40,7 @@ class MarsTimeDomainService
     }
 
     /**
-     * Calculate the MTC from the MSD using fractions
+     * Calculates the MTC from the MSD
      * using the formula MTC = (MSD mod 1) × 24 h @see https://en.wikipedia.org/wiki/Timekeeping_on_Mars#cite_note-giss1-1
      * @param MarsSolDate $marsSolDate
      * @return MartianCoordinatedTime
