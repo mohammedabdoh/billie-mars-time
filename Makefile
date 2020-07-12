@@ -15,6 +15,8 @@ run: ## run the application
 	@docker-compose up --build -d
 	@sudo chmod -R 777 ./var/cache
 	@docker exec -it billie_php_fpm_container ./bin/console cache:warmup
+	printf "\n-> Service is available at: http://localhost"
+	printf "\n-> Example: http://localhost/mars-time/convert/2020-07-11T16:36:52+00:00"
 
 .PHONY: test
 test: ## run unit and functional tests
