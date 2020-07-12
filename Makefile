@@ -22,6 +22,10 @@ run: ## run the application
 test: ## run unit and functional tests
 	@docker exec -it billie_php_fpm_container ./vendor/phpunit/phpunit/phpunit
 
+.PHONY: api-docs
+api-docs: ## open the api docs
+	@open http://localhost/docs/
+
 .PHONY: clean
 clean: ## stops the containers if exists and remove all the dependencies
 	@docker-compose down --remove-orphans || true
