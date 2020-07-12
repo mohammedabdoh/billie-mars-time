@@ -13,7 +13,7 @@ install: ## Install project dependencies
 run: ## run the application
 	@chmod -R 777 ./docker/socket
 	@docker-compose up --build -d
-	@chmod -R 777 ./var/cache
+	@sudo chmod -R 777 ./var/cache
 	@docker exec -it billie_php_fpm_container ./bin/console cache:warmup
 
 .PHONY: test
