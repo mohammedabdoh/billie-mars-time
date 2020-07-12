@@ -6,15 +6,14 @@ namespace App\Resource\API\Controller;
 use App\Application\Representation\Error\InvalidDateTimeValueRepresentation;
 use App\Application\Representation\MarsTimeRepresentation;
 use App\Application\Service\MarsTimeApplicationService;
-use App\Resource\API\SerializedResponseHandler;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use FOS\RestBundle\Controller\AbstractFOSRestController;
+use FOS\RestBundle\Controller\Annotations as Rest;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 use DateTime;
 use Exception;
 
-class MarsTimeController extends AbstractController
+class MarsTimeController extends AbstractFOSRestController
 {
     private MarsTimeApplicationService $applicationService;
 
@@ -28,24 +27,28 @@ class MarsTimeController extends AbstractController
     }
 
     /**
-     * @Route("/mars-time/convert/{earthUTCTime}", methods={"GET"}, name="mars-time-convert-route")
-     * @param SerializedResponseHandler $responseHandler
+     * @Rest\Get("/mars-time/convert/{earthUTCTime}")
      * @param string $earthUTCTime
      * @return JsonResponse
      */
-    public function convert(SerializedResponseHandler $responseHandler, string $earthUTCTime): JsonResponse
+    public function convert(string $earthUTCTime): Response
     {
         try {
             $earthUTCTimeDateObject = new DateTime($earthUTCTime);
-            return $responseHandler->render(
-                new MarsTimeRepresentation(
-                    $this->applicationService->convertToMarsTime($earthUTCTimeDateObject)
-                )
+            return $this->handleView(
+                $this->view(
+                    new MarsTimeRepresentation(
+                        $this->applicationService->convertToMarsTime($earthUTCTimeDateObject)
+                    ),
+                    Response::HTTP_OK
+                )->setFormat('json')
             );
         } catch (Exception $e) {
-            return $responseHandler->render(
-                new InvalidDateTimeValueRepresentation(),
-                Response::HTTP_BAD_REQUEST
+            return $this->handleView(
+                $this->view(
+                    new InvalidDateTimeValueRepresentation(),
+                    Response::HTTP_BAD_REQUEST
+                )->setFormat('json')
             );
         }
     }
