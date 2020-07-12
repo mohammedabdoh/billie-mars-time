@@ -2,7 +2,7 @@
 
 ### How to run the service
 Make sure you have the following components installed on your system:
-* Docker and Docker Composer
+* Docker and Docker Compose
 
 To run the application do the following steps in your terminal:
 * `git clone git@github.com:mohammedabdoh/billie-mars-time.git`
