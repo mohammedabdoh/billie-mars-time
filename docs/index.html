@@ -40,7 +40,7 @@
                         </td>
                         <td>
                             <p>Converts the UTC time into a MSD and MTC equivalent</p>
-        
+                            <p style="font-weight: bold">Ex: http://localhost/mars-time/convert/2020-07-11T16:36:52+00:00</p>
                         </td>
                     </tr>
             </tbody>
@@ -79,7 +79,7 @@
                                 <tbody>
                                         <tr>
                                             <td>
-                                                earthUTCTime
+                                                earthUTCTime (<span style="font-weight: bold">Ex: 2020-07-11T16:36:52+00:00</span>)
                                             </td>
                                             <td><p>The Earth time in UTC format</p>
                                         </td>
@@ -104,12 +104,12 @@
                             <dl>
                                     <dt class="sw-response-200">
                                         200 OK
-                                    
+
                                     </dt>
                                     <dd class="sw-response-200">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <p>The reponse Object</p>
+                                                    <p>The response Object</p>
 <pre>{
     "marsSolDate": 52088.219829401234,
     "martianCoordinatedTime": "05:16:33"
@@ -117,25 +117,40 @@
 </pre>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                
-                                                <div class="col-md-6 sw-response-model">
-                                                <div  class="panel panel-definition">
-                                                    <div class="panel-body">
-                                                            
-                                                                            <section class="json-schema-array-items">
-                                                                                
+                                            </dd>
+                                <dt class="sw-response-200">
+                                    400 BAD REQUEST
+
+                                </dt>
+                                <dd class="sw-response-200">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <p>The response Object</p>
+<pre>{
+    "error": "Invalid earth time stamp in UTC format"
+}
+</pre>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+
+                                        <div class="col-md-6 sw-response-model">
+                                            <div  class="panel panel-definition">
+                                                <div class="panel-body">
+
+                                                    <section class="json-schema-array-items">
+
                                                                                 <span class="json-property-type">    <a class="json-schema-ref" href="#/definitions/TimeOnMars">TimeOnMars</a>
                                                                                 </span>
-                                                                                <span class="json-property-range" title="Value limits"></span>
-                                                                                
-                                                                                <div class="json-inner-schema">
-                                                                                    
-                                                                                </div>
-                                                                            </section>    </div>
-                                                </div></div>
-                                            
-                                            </div>                </dd>
+                                                        <span class="json-property-range" title="Value limits"></span>
+
+                                                        <div class="json-inner-schema">
+
+                                                        </div>
+                                                    </section>    </div>
+                                            </div></div>
+
+                                    </div>                </dd>
                             </dl>
                         </section>
                 </div>
