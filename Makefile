@@ -8,6 +8,7 @@ COMPOSER=$(DOCKER) --user $(id -u):$(id -g) -v ${PWD}:/app $(COMPOSER_DOCKER_IMA
 install: ## Install project dependencies
 	@$(COMPOSER) composer install
 	@$(COMPOSER) composer dump-autoload
+	@docker exec -it billie_php_fpm_container ./bin/console cache:warmup
 
 .PHONY: run
 run: ## run the application
