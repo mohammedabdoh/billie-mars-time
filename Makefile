@@ -12,6 +12,7 @@ install: ## Install project dependencies
 .PHONY: run
 run: ## run the application
 	@chmod -R 777 ./docker/socket
+	@chmod -R 777 cache
 	@docker-compose up --build -d
 	@docker exec -it billie_php_fpm_container ./bin/console cache:warmup
 
@@ -24,10 +25,6 @@ clean: ## stops the containers if exists and remove all the dependencies
 	@docker-compose down --remove-orphans || true
 	@sudo rm -rf vendor || true
 	@rm -rf composer.lock || true
-
-.PHONY: api-docs
-api-docs: ## Show the API documentation
-	@open http://localhost/docs/
 
 .PHONY: help
 help:
