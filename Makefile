@@ -12,8 +12,8 @@ install: ## Install project dependencies
 .PHONY: run
 run: ## run the application
 	@chmod -R 777 ./docker/socket
-	@chmod -R 777 cache
 	@docker-compose up --build -d
+	@chmod -R 777 cache
 	@docker exec -it billie_php_fpm_container ./bin/console cache:warmup
 
 .PHONY: test
