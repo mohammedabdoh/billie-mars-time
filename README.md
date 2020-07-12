@@ -7,7 +7,7 @@ Make sure you have the following components installed on your system:
 To run the application do the following steps in your terminal:
 * `git clone git@github.com:mohammedabdoh/billie-mars-time.git`
 * `cd billie-mars-time`
-* `make clean install run`
+* `make clean run`
 
 To open the docs run:
 * `make api-docs`

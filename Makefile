@@ -4,11 +4,6 @@ COMPOSER_DOCKER_IMAGE=composer
 
 COMPOSER=$(DOCKER) --user $(id -u):$(id -g) -v ${PWD}:/app $(COMPOSER_DOCKER_IMAGE)
 
-.PHONY: install
-install: ## Install project dependencies
-	@$(COMPOSER) composer install
-	@$(COMPOSER) composer dump-autoload
-
 .PHONY: run
 run: ## run the application
 	@docker-compose up --build -d
