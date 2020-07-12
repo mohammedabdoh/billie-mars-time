@@ -11,7 +11,7 @@ install: ## Install project dependencies
 
 .PHONY: run
 run: ## run the application
-	@sudo chmod -R 777 ./docker/socket
+	@chmod -R 777 ./docker/socket
 	@docker-compose up --build -d
 
 .PHONY: test
@@ -21,10 +21,10 @@ test: ## run unit and functional tests
 .PHONY: clean
 clean: ## stops the containers if exists and remove all the dependencies
 	@docker-compose down --remove-orphans || true
-	@sudo rm -rf vendor || true
-	@sudo rm -rf var/cache/* || true
-	@sudo rm -rf bin/.phpunit || true
-	@sudo rm -rf composer.lock || true
+	@rm -rf vendor || true
+	@rm -rf var/cache/* || true
+	@rm -rf bin/.phpunit || true
+	@rm -rf composer.lock || true
 
 .PHONY: api-docs
 api-docs: ## Show the API documentation
