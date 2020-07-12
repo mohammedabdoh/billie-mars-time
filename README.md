@@ -21,6 +21,6 @@ An example is:
 curl http://localhost/mars-time/convert/2020-07-12T12:24:19+00:00
 ```
 
-Note: The endpoint does not need an authentication to work. This is only to complete the task. In case
-of production ready microservices authentication can have different forms from simple username/password to 
+Note: The endpoint does not require an authentication to work. This is only to complete the task. In case
+of production ready micro services authentication can have different forms from simple username/password to 
 using oAuth2 ;)
