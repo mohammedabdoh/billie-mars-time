@@ -23,6 +23,13 @@ services:
       - billie
     environment:
       PHP_IDE_CONFIG: "serverName=billie"
+  composer:
+    build: ./docker/composer
+    container_name: billie_composer_container
+    volumes:
+      - .:/app
+    networks:
+      - billie
 
 volumes:
   fpm_sockets:

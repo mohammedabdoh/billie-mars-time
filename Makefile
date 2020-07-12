@@ -12,7 +12,9 @@ install: ## Install project dependencies
 .PHONY: run
 run: ## run the application
 	@docker-compose up --build -d
+	@docker exec -it billie_composer_container composer install
 	@docker exec -it billie_php_fpm_container ./bin/console cache:warmup
+	@docker stop billie_composer_container && docker rm billie_composer_container
 	@printf "\n-> Service is available at: http://localhost"
 	@printf "\n-> Example: http://localhost/mars-time/convert/2020-07-11T16:36:52+00:00\n"
 
@@ -27,6 +29,9 @@ api-docs: ## open the api docs
 .PHONY: clean
 clean: ## stops the containers if exists and remove all the dependencies
 	@docker-compose down --remove-orphans || true
+	@rm -rf vendor || true
+	@rm -rf var || true
+	@rm -rf composer.lock || true
 
 .PHONY: help
 help:
