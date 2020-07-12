@@ -15,12 +15,13 @@ To open the docs run:
 To run unit tests and functional tests run:
 * `make test`
 
-You can use `curl`, `Postman` or any other HTTP clients to use the service.
-An example is:
+You can use `curl`, `Postman` or any other HTTP client to use the service.
+
+An example of converting time on Earth:
 ```
 curl http://localhost/mars-time/convert/2020-07-12T12:24:19+00:00
 ```
 
-Note: The endpoint does not require authentication to work. This is only to complete the task. In case
+**Note:** The endpoint does not require authentication to work. This is only to complete the task. In case
 of production ready micro services authentication can have different forms from simple username/password to 
 using oAuth2 ;)
