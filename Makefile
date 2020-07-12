@@ -11,7 +11,6 @@ install: ## Install project dependencies
 
 .PHONY: run
 run: ## run the application
-	@chmod -R 777 ./docker/socket
 	@docker-compose up --build -d
 	@sudo chmod -R 777 ./var/cache
 	@sudo chmod -R 777 ./var/log

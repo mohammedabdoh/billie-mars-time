@@ -5,7 +5,7 @@ services:
     container_name: billie_web_container
     volumes: 
       - .:/var/www/html:cached
-      - ./docker/socket:/socket
+      - fpm_sockets:/tmp
     depends_on: 
       - php
     ports:
@@ -18,11 +18,15 @@ services:
     container_name: billie_php_fpm_container
     volumes:
       - .:/var/www/html:cached
-      - ./docker/socket:/socket
+      - fpm_sockets:/tmp
     networks:
       - billie
     environment:
       PHP_IDE_CONFIG: "serverName=billie"
+
+volumes:
+  fpm_sockets:
+    driver: local
 
 networks:
   billie:
